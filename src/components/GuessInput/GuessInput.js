@@ -14,7 +14,7 @@ function GuessInput({gameStatus, handleSubmitGuess}) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="guess-input-wrapper">
+    <form onSubmit={handleSubmit} autoComplete="off" className="guess-input-wrapper">
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
