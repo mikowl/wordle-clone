@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function GuessInput({gameStatus, handleSubmitGuess}) {
   const [tentativeGuess, setTentativeGuess] = useState('');
@@ -18,6 +18,7 @@ function GuessInput({gameStatus, handleSubmitGuess}) {
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         required
+        autoFocus
         disabled={gameStatus !== 'running'}
         id="guess-input"
         type="text"
