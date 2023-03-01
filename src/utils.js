@@ -13,3 +13,20 @@ export const range = (start, end, step = 1) => {
   }
   return output;
 };
+
+export const handleKeyPress = (e) => {
+  if (e.key === "Enter") {
+    submitGuess();
+    return;
+  }
+
+  if (e.key === "Backspace" || e.key === "Delete") {
+    deleteKey();
+    return;
+  }
+
+  if (e.key.match(/^[a-z]$/)) {
+    pressKey(e.key);
+    return;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { handleKeyPress } from '../../utils';
 
 const ROWS = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
@@ -18,7 +19,16 @@ function getStatusByLetter(validatedGuesses) {
   return statusObj;
 }
 
-const Keyboard = ({ validatedGuesses }) => {
+// make keyboard clickable
+// add event listener to each letter
+// when letter is clicked, call onGuess function
+// pass letter as argument to onGuess function
+// onGuess function will be passed as prop from App.js
+// onGuess function will update state in App.js
+// App.js will pass updated state as prop to Keyboard.js
+// Keyboard.js will re-render with updated state
+
+function Keyboard({ validatedGuesses, onGuess }) {
   let statusByLetter = getStatusByLetter(validatedGuesses);
 
   return (
@@ -29,6 +39,7 @@ const Keyboard = ({ validatedGuesses }) => {
             <div
               key={letter}
               className={`letter ${statusByLetter[letter]}`}
+              onClick={() => onGuess(letter)}
             >
               {letter}
             </div>
@@ -37,6 +48,6 @@ const Keyboard = ({ validatedGuesses }) => {
       ))}
     </div>
   );
-};
+}
 
 export default Keyboard;
